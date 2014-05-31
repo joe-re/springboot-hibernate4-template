@@ -1,6 +1,6 @@
 package jp.co.buckets.service;
 
-import jp.co.buckets.dao.DaoImpl;
+import jp.co.buckets.dao.impl.BookDaoImpl;
 import jp.co.buckets.dto.Book;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BookInsertService {
     @Autowired
-    DaoImpl daoImpl;
+    BookDaoImpl daoImpl;
     @Transactional
     public void transactionTest() {
         Book book = new Book();

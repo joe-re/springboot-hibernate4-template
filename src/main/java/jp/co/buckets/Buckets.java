@@ -1,7 +1,5 @@
 package jp.co.buckets;
 
-import java.util.Properties;
-
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
@@ -28,27 +26,15 @@ public class Buckets {
        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
        sessionFactory.setDataSource(dataSource);
        sessionFactory.setPackagesToScan(new String[] { "jp.co.buckets.dto" });
-       sessionFactory.setHibernateProperties(hibernateProperties());
-  
        return sessionFactory;
     }
-    Properties hibernateProperties() {
-        return new Properties() {
-            private static final long serialVersionUID = 1L;
-        {
-              setProperty("hibernate.hbm2ddl.auto", "update");
-              setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-              setProperty("hibernate.globally_quoted_identifiers", "true");
-           }
-        };
-     }
-  
+
+ 
     @Bean
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
        HibernateTransactionManager txManager = new HibernateTransactionManager();
        txManager.setSessionFactory(sessionFactory);
-  
        return txManager;
     }
   
