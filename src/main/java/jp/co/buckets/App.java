@@ -17,7 +17,7 @@ import org.springframework.stereotype.Controller;
 @EnableAutoConfiguration
 @ComponentScan
 @Configuration
-public class Buckets {
+public class App {
     @Autowired
     DataSource dataSource;
     
@@ -39,7 +39,7 @@ public class Buckets {
     }
   
     public static void main(String[] arguments) {
-        SpringApplication.run(Buckets.class, arguments);
+        SpringApplication.run(App.class, arguments);
     }
     
 
